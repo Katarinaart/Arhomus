@@ -139,3 +139,5 @@
 Для визуального клонирования донора используйте: `tilda/arhomus_vivol_exact_template.html`.
 
 Автоподготовка donor-шаблона: `python scripts/retarget_vivol_template.py`.
+
+Если вы работаете без терминала (например, iPad), используйте уже сгенерированный файл `tilda/arhomus_vivol_exact_template.html` напрямую в T123.
