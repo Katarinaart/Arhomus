@@ -141,3 +141,5 @@
 Автоподготовка donor-шаблона: `python scripts/retarget_vivol_template.py`.
 
 Если вы работаете без терминала (например, iPad), используйте уже сгенерированный файл `tilda/arhomus_vivol_exact_template.html` напрямую в T123.
+
+Если редактор T123 ограничивает объем, используйте разбиение на части: `python scripts/split_t123_template.py` и файлы `tilda/arhomus_vivol_t123_part*.html`.
