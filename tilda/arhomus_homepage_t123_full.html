@@ -1,0 +1,259 @@
+<!-- ARHOMUS Full Homepage for Tilda T123 -->
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --surface: #131313;
+    --surface-2: #181818;
+    --text: #ffffff;
+    --muted: #9a9a9a;
+    --line: #2b2b2b;
+    --accent: #d7ff2f;
+    --max: 1240px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, Arial, sans-serif; }
+  a { color: inherit; text-decoration: none; }
+
+  .arh-wrap { background: var(--bg); color: var(--text); }
+  .arh-container { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+  .arh-section { padding: 80px 0; border-top: 1px solid var(--line); }
+  .arh-title { margin: 0 0 24px; font-size: clamp(26px, 4vw, 52px); line-height: 1.05; letter-spacing: .02em; text-transform: uppercase; }
+  .arh-sub { margin: 0; font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 840px; }
+
+  .arh-header {
+    position: sticky; top: 0; z-index: 25;
+    background: rgba(13,13,13,.92); backdrop-filter: blur(7px);
+    border-bottom: 1px solid var(--line);
+  }
+  .arh-header__in { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 0; }
+  .arh-logo { font-weight: 700; letter-spacing: .18em; font-size: 14px; text-transform: uppercase; }
+  .arh-nav { display: flex; gap: 20px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .arh-lang { display: flex; gap: 8px; font-size: 12px; letter-spacing: .08em; }
+  .arh-lang a.is-active { color: var(--accent); }
+
+  .arh-hero { padding: 110px 0 90px; border-top: none; }
+  .arh-hero__grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 24px; align-items: stretch; }
+  .arh-hero__card {
+    border: 1px solid var(--line);
+    background: linear-gradient(120deg, #0f0f0f 0%, #171717 100%);
+    padding: 36px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .arh-kicker { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+  .arh-manifest { margin: 14px 0 0; font-size: clamp(26px, 4vw, 62px); line-height: 1; text-transform: uppercase; }
+  .arh-manifest small { display: block; color: var(--muted); font-size: 28%; line-height: 1.3; margin-top: 16px; max-width: 680px; }
+  .arh-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .arh-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 48px; padding: 0 24px; border: 1px solid var(--line);
+    text-transform: uppercase; letter-spacing: .08em; font-size: 12px;
+    transition: .2s ease;
+  }
+  .arh-btn--primary { border-color: var(--accent); color: #111; background: var(--accent); font-weight: 700; }
+  .arh-btn:hover { transform: translateY(-2px); }
+  .arh-hero__meta {
+    border: 1px solid var(--line); background: var(--surface); padding: 30px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .arh-meta-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .arh-meta-list li { border-bottom: 1px solid var(--line); padding-bottom: 10px; font-size: 14px; color: var(--muted); }
+  .arh-meta-list b { color: var(--text); font-weight: 600; }
+
+  .arh-matrix { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 28px; }
+  .arh-matrix__item {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    padding: 18px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .arh-matrix__item h3 { margin: 0; font-size: 24px; text-transform: uppercase; }
+  .arh-matrix__item p { margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+  .arh-products { margin-top: 28px; display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+  .arh-card {
+    border: 1px solid var(--line); background: var(--surface);
+    display: flex; flex-direction: column;
+  }
+  .arh-media {
+    aspect-ratio: 4/5;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(130deg, #111 0%, #1a1a1a 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: #555; font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+  }
+  .arh-card__body { padding: 16px; display: grid; gap: 9px; }
+  .arh-card__title { margin: 0; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; }
+  .arh-card__desc { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; min-height: 58px; }
+  .arh-card__row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+  .arh-price { color: var(--accent); font-weight: 700; }
+  .arh-stock { color: var(--muted); }
+
+  .arh-designer {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px;
+  }
+  .arh-panel { border: 1px solid var(--line); background: var(--surface); padding: 28px; }
+  .arh-panel h3 { margin: 0 0 12px; font-size: 20px; text-transform: uppercase; letter-spacing: .03em; }
+  .arh-panel p { margin: 0; color: var(--muted); line-height: 1.7; }
+
+  .arh-steps { margin-top: 28px; display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+  .arh-step { border: 1px solid var(--line); background: var(--surface-2); padding: 18px; }
+  .arh-step b { display: block; color: var(--accent); margin-bottom: 8px; }
+  .arh-step p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+  .arh-footer { padding: 26px 0 34px; border-top: 1px solid var(--line); }
+  .arh-footer__in { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; color: var(--muted); font-size: 12px; letter-spacing: .05em; text-transform: uppercase; }
+
+  @media (max-width: 1120px) {
+    .arh-products { grid-template-columns: repeat(3,1fr); }
+    .arh-steps { grid-template-columns: repeat(2,1fr); }
+  }
+
+  @media (max-width: 860px) {
+    .arh-container { width: min(var(--max), calc(100% - 28px)); }
+    .arh-hero__grid, .arh-designer { grid-template-columns: 1fr; }
+    .arh-matrix { grid-template-columns: 1fr; }
+    .arh-products { grid-template-columns: repeat(2,1fr); }
+    .arh-nav { display: none; }
+  }
+
+  @media (max-width: 560px) {
+    .arh-products, .arh-steps { grid-template-columns: 1fr; }
+    .arh-section { padding: 62px 0; }
+    .arh-hero { padding: 86px 0 62px; }
+  }
+</style>
+
+<div class="arh-wrap" id="arhomus-home">
+  <header class="arh-header">
+    <div class="arh-container arh-header__in">
+      <a class="arh-logo" href="/">ARHOMUS U8</a>
+      <nav class="arh-nav">
+        <a href="#manifest">Манифест</a>
+        <a href="#matrix">Матрицы</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#designer">Дизайнер</a>
+        <a href="#packaging">Упаковка</a>
+      </nav>
+      <div class="arh-lang">
+        <a href="/" class="is-active">RU</a>
+        <a href="/en">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="arh-section arh-hero" id="manifest">
+    <div class="arh-container arh-hero__grid">
+      <article class="arh-hero__card">
+        <div>
+          <div class="arh-kicker">Conceptual clothing / Tim Viter</div>
+          <h1 class="arh-manifest">Связь внутреннего мира с внешним
+            <small>ARHOMUS — это объекты-трансформеры, где философия, конструкция и функциональность соединяются в единую форму присутствия в пространстве.</small>
+          </h1>
+        </div>
+        <div class="arh-cta">
+          <a class="arh-btn arh-btn--primary" href="/shop">Перейти в каталог</a>
+          <a class="arh-btn" href="#catalog">Смотреть коллекцию U8</a>
+        </div>
+      </article>
+
+      <aside class="arh-hero__meta">
+        <ul class="arh-meta-list">
+          <li><b>Линия бренда:</b> Связь внутреннего мира с внешним</li>
+          <li><b>Дизайнер:</b> Tim Viter</li>
+          <li><b>Отправка in-stock:</b> 1 день</li>
+          <li><b>Формат магазина:</b> RU / EN</li>
+          <li><b>DNA:</b> U8 • AVATAR • MATRIX 3D/4D/5D</li>
+        </ul>
+        <a class="arh-btn" href="/cart">Открыть корзину</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="arh-section" id="matrix">
+    <div class="arh-container">
+      <h2 class="arh-title">Матрицы коллекции</h2>
+      <p class="arh-sub">Каталог организован как система переходов между уровнями 3D / 4D / 5D. Каждый продукт — отдельный объект с философией, дизайном и технологическим функционалом.</p>
+
+      <div class="arh-matrix">
+        <article class="arh-matrix__item">
+          <h3>3D</h3>
+          <p>Материализация формы: базовые архетипы ARHOMUS, функциональные объекты и утилитарная эстетика.</p>
+        </article>
+        <article class="arh-matrix__item">
+          <h3>4D</h3>
+          <p>Переход: модульность, деконструкция и трансформируемые узлы в силуэте и конструкции.</p>
+        </article>
+        <article class="arh-matrix__item">
+          <h3>5D</h3>
+          <p>Концептуальный слой: авторские арт-коды U8 и объекты с усиленной символической нагрузкой.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="arh-section" id="catalog">
+    <div class="arh-container">
+      <h2 class="arh-title">Избранные айтемы U8</h2>
+      <p class="arh-sub">Ниже — визуальный лейаут главной. Для реальной продажи используйте нативные Store-блоки Tilda на странице `/shop`, чтобы корректно работали карточки, остатки и checkout.</p>
+
+      <div class="arh-products">
+        <article class="arh-card"><div class="arh-media">ABSTRACTOR</div><div class="arh-card__body"><h3 class="arh-card__title">U8 [ABSTRACTOR]</h3><p class="arh-card__desc">Скульптурный абстракционизм в формате hoodie-объекта.</p><div class="arh-card__row"><span class="arh-price">188 000 ₽</span><span class="arh-stock">15 шт.</span></div></div></article>
+        <article class="arh-card"><div class="arh-media">METALLER</div><div class="arh-card__body"><h3 class="arh-card__title">U8 [METALLER]</h3><p class="arh-card__desc">High-tech hoodie с цепью-карабином и U8-кодами.</p><div class="arh-card__row"><span class="arh-price">88 000 ₽</span><span class="arh-stock">13 шт.</span></div></div></article>
+        <article class="arh-card"><div class="arh-media">STARTER</div><div class="arh-card__body"><h3 class="arh-card__title">U8 [STARTER]</h3><p class="arh-card__desc">Джинсовый жакет-деконструкция с модульным капюшоном.</p><div class="arh-card__row"><span class="arh-price">288 000 ₽</span><span class="arh-stock">8 шт.</span></div></div></article>
+        <article class="arh-card"><div class="arh-media">CODER</div><div class="arh-card__body"><h3 class="arh-card__title">U8 [CODER]</h3><p class="arh-card__desc">Арт-печать «Код U8» и технологичные детали конструкции.</p><div class="arh-card__row"><span class="arh-price">88 000 ₽</span><span class="arh-stock">1 шт.</span></div></div></article>
+        <article class="arh-card"><div class="arh-media">GINZER</div><div class="arh-card__body"><h3 class="arh-card__title">U8 [GINZER]</h3><p class="arh-card__desc">Кимоно-жакет в neo-азиатской интерпретации.</p><div class="arh-card__row"><span class="arh-price">188 000 ₽</span><span class="arh-stock">4 шт.</span></div></div></article>
+        <article class="arh-card"><div class="arh-media">TRACKER</div><div class="arh-card__body"><h3 class="arh-card__title">U8 [TRACKER]</h3><p class="arh-card__desc">Китель mil-tech с трансформируемым карманом-клатчем.</p><div class="arh-card__row"><span class="arh-price">188 000 ₽</span><span class="arh-stock">5 шт.</span></div></div></article>
+        <article class="arh-card"><div class="arh-media">ZIPPER</div><div class="arh-card__body"><h3 class="arh-card__title">U8 [ZIPPER]</h3><p class="arh-card__desc">Жилет-рюкзак с мультифункциональными отсеками.</p><div class="arh-card__row"><span class="arh-price">188 000 ₽</span><span class="arh-stock">19 шт.</span></div></div></article>
+        <article class="arh-card"><div class="arh-media">FREESTYLER</div><div class="arh-card__body"><h3 class="arh-card__title">U8 [FREESTYLER]</h3><p class="arh-card__desc">Мембранная куртка для активного образа и сноубординга.</p><div class="arh-card__row"><span class="arh-price">388 000 ₽</span><span class="arh-stock">6 шт.</span></div></div></article>
+      </div>
+
+      <div class="arh-cta" style="margin-top:22px">
+        <a class="arh-btn arh-btn--primary" href="/shop">Открыть полный каталог</a>
+        <a class="arh-btn" href="/cart">Перейти в корзину</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="arh-section" id="designer">
+    <div class="arh-container">
+      <h2 class="arh-title">Дизайнер & философия</h2>
+      <div class="arh-designer">
+        <article class="arh-panel">
+          <h3>Tim Viter</h3>
+          <p>Креативная система ARHOMUS строится как мост между внутренним состоянием и внешней формой. Каждая модель проектируется как самостоятельный объект с функциональной логикой, графическим кодом и ритуалом ношения.</p>
+        </article>
+        <article class="arh-panel" id="packaging">
+          <h3>Упаковка и коллекционный протокол</h3>
+          <p>Для ключевых изделий предусмотрены брендовые элементы сопровождения: рюкзак-мешок, коллекционная вешалка U8, внутренняя история DNK-бренда. Это часть продукта, а не дополнительная опция.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="arh-section">
+    <div class="arh-container">
+      <h2 class="arh-title">Сценарий покупки</h2>
+      <div class="arh-steps">
+        <article class="arh-step"><b>01</b><p>Переход в каталог и выбор объекта U8.</p></article>
+        <article class="arh-step"><b>02</b><p>Просмотр карточки: дизайн, материалы, упаковка.</p></article>
+        <article class="arh-step"><b>03</b><p>Добавление в корзину и проверка наличия.</p></article>
+        <article class="arh-step"><b>04</b><p>Оформление заказа в стандартной корзине Tilda.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="arh-footer">
+    <div class="arh-container arh-footer__in">
+      <span>ARHOMUS © 2026</span>
+      <span>Conceptual clothing / U8 system</span>
+      <span><a href="/shop">Shop</a> · <a href="/cart">Cart</a></span>
+    </div>
+  </footer>
+</div>

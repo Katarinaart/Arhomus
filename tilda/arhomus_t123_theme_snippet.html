@@ -1,0 +1,98 @@
+<!-- ARHOMUS theme snippet for Tilda T123 block -->
+<style>
+  :root {
+    --arh-bg: #0d0d0d;
+    --arh-text: #ffffff;
+    --arh-muted: #9a9a9a;
+    --arh-acid: #d7ff2f;
+    --arh-line: #2b2b2b;
+  }
+
+  .t-store,
+  .t-store__card,
+  .js-store-grid-cont {
+    background: var(--arh-bg) !important;
+    color: var(--arh-text) !important;
+  }
+
+  .t-store__card {
+    border: 1px solid var(--arh-line);
+    transition: transform .25s ease, border-color .25s ease;
+  }
+
+  .t-store__card:hover {
+    transform: translateY(-4px);
+    border-color: var(--arh-acid);
+  }
+
+  .t-store__card__title,
+  .t-store__prod-popup__name,
+  .t-store__prod-popup__price-wrapper {
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+
+  .t-store__card__price,
+  .t-store__prod-popup__price-value {
+    color: var(--arh-acid) !important;
+    font-weight: 600;
+  }
+
+  .t-store__card__text,
+  .t-store__prod-popup__text {
+    color: var(--arh-muted) !important;
+  }
+
+  .t706__carticon,
+  .tcart__icon,
+  .t-store__card__btn,
+  .t-submit {
+    border-radius: 0 !important;
+  }
+
+  /* Optional language switcher style for header links */
+  .arh-lang-switch {
+    display: inline-flex;
+    gap: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  .arh-lang-switch a {
+    color: var(--arh-muted);
+    text-decoration: none;
+  }
+
+  .arh-lang-switch a.is-active {
+    color: var(--arh-acid);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var isEnglish = (document.documentElement.lang || '').toLowerCase().indexOf('en') === 0;
+    var readinessText = isEnglish ? 'Ready to ship: 1 day' : 'Готовность к отправке: 1 день';
+
+    var cards = document.querySelectorAll('.t-store__card');
+    cards.forEach(function (card) {
+      if (card.querySelector('.arh-readiness')) return;
+
+      var badge = document.createElement('div');
+      badge.className = 'arh-readiness';
+      badge.textContent = readinessText;
+      badge.style.cssText = [
+        'font-size:11px',
+        'letter-spacing:.08em',
+        'text-transform:uppercase',
+        'color:#d7ff2f',
+        'padding:8px 0 0'
+      ].join(';');
+
+      var textNode = card.querySelector('.t-store__card__text') || card.querySelector('.t-store__card__title');
+      if (textNode && textNode.parentNode) {
+        textNode.parentNode.appendChild(badge);
+      }
+    });
+  });
+</script>
