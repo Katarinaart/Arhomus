@@ -135,3 +135,5 @@
 
 
 См. также подробный production-чеклист: `docs/tilda_step_by_step_from_t123_t100.md`.
+
+Для визуального клонирования донора используйте: `tilda/arhomus_vivol_exact_template.html`.
