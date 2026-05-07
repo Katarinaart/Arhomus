@@ -140,8 +140,9 @@ td{padding:16px 14px;vertical-align:top}
 .td-meaning{color:var(--fgm);font-size:17px}
 .layer-card{border:1px solid var(--border);padding:18px;margin-bottom:0}
 .layer-card::before{content:attr(data-nums);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--orange);letter-spacing:1px;display:block;margin-bottom:6px}
-.layer-card h4{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--fg);letter-spacing:1px;margin-bottom:6px}
+.layer-card h4{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--fg);letter-spacing:1px;margin-bottom:6px;word-break:break-word;overflow-wrap:anywhere;hyphens:auto}
 .layer-card p{font-size:18px!important;color:var(--fgd);margin:0}
+@media(max-width:600px){.layer-card{padding:14px}.layer-card h4{font-size:16px;letter-spacing:.3px}.layer-card p{font-size:14px!important}}
 .placeholder{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--fgdd);background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.1);padding:8px 12px;margin:4px 0}
 .placeholder::before{content:'[ DATA UNAVAILABLE — ';color:#444}
 .placeholder::after{content:' ]';color:#444}
@@ -1427,7 +1428,16 @@ body.light-theme .q-detail{color:var(--fgm)}
       @media(max-width:600px) {
         .logo-showcase { flex-direction: column; }
         .logo-card, .logo-card--center { flex: unset; width: 100%; }
-        .logo-card img, .logo-card--center img { height: 280px; }
+        .logo-card img, .logo-card--center img {
+          height: auto;
+          max-height: 420px;
+          width: 100%;
+          object-fit: contain;
+          object-position: center;
+          background: var(--bg3);
+          padding: 12px;
+          box-sizing: border-box;
+        }
         .logo-card--center::before { display:none; }
       }
     </style>
